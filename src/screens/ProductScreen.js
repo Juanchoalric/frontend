@@ -1,53 +1,78 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import data from '../data';
+import { detailProducts } from '../actions/productActions';
 
 function ProductScreen (props) {
-    console.log(props.match.params.id)
-    const product = data.products.find(x=> x._id=== props.match.params.id);
+    const productDetails = useSelector(state => state.productDetails);
+    const {product, loading, error} = productDetails;
+    const dispath = useDispatch();
+    useEffect(() => {
+        dispath(detailProducts(props.match.params.id));
+        return ()=> {
+            //
+        };
+    }, []);
+
+    const handleAddToCart = () => {
+        props.history.push("/cart/"+ props.match.params.id+"?qty="+1);
+    }
+
     return <div>
         <div className="back-to-result">
             <Link to="/">Back to results</Link>
         </div>
-        <div className="details">
-            <div className="details-image">
-                <img src={product.image} alt="product-image" />
+        {loading ? <div>Loading...</div> :
+            error? <div>{error}</div> :
+            (
+                <div className="details">
+                <div className="details-image">
+                    <img src={product.image} alt="product-image" />
+                </div>
+                <div className="details-info">
+                    <ul>
+                        <li>
+                            <h4>{product.name}</h4>
+                        </li>
+                        <li>
+                            {product.rating} Stars ({product.numReviews} Reviews)
+                        </li>
+                        <li>
+                            Price: <b>${product.price}</b>
+                        </li>
+                        <li>
+                            Descripcion:
+                            <div>
+                                {product.description}
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div className="details-action">
+                    <ul>
+                        <li>
+                            Price: {product.price}
+                        </li>
+                        <li>
+                            Status: {product.status}
+                        </li>
+                        <li>
+                            {product.countInStock > 0?
+                            <button onClick={handleAddToCart} className="button primary">
+                              Add to Cart
+                            </button>
+                            :
+                            <div>No tenemos mas Stock</div>    
+                        
+                        }
+                            
+                              
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div className="details-info">
-                <ul>
-                    <li>
-                        <h4>{product.name}</h4>
-                    </li>
-                    <li>
-                        {product.rating} Stars ({product.numReviews} Reviews)
-                    </li>
-                    <li>
-                        Price: <b>${product.price}</b>
-                    </li>
-                    <li>
-                        Descripcion:
-                        <div>
-                            {product.description}
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div className="details-action">
-                <ul>
-                    <li>
-                        Price: {product.price}
-                    </li>
-                    <li>
-                        Status: {product.status}
-                    </li>
-                    <li>
-                        <button className="button">
-                            Add to Cart
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
+            )
+    }
     </div>
 }
 
