@@ -48,7 +48,7 @@ function ProductsScreen (props) {
                 </li>
                 <li>
                     {loadingSave && <div>Loading...</div>}
-                    {errorSave && <div>{Error}</div>}
+                    {errorSave && <div>{errorSave}</div>}
                 </li>
                 <li>
                     <label htmlFor="name">

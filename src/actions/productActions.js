@@ -1,4 +1,5 @@
 import axios from "axios";
+import Axios from 'axios';
 import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_SAVE_FAIL, PRODUCT_SAVE_REQUEST, PRODUCT_SAVE_SUCCESS } from "../constants/productConstants"
 
 const listProducts = () => async (dispatch) => {
@@ -15,7 +16,7 @@ const saveProduct = (product) => async(dispatch, getState) => {
     try {
         dispatch({type: PRODUCT_SAVE_REQUEST, payload: product});
         const { userSignin: {userinfo} } = getState();
-        const {data} = await axios.post('/api/products', {product}, {headers:{
+        const {data} = await Axios.post('/api/products', {product}, {headers:{
             'Authorization': 'Bearer' + userinfo.token
         }});
         dispatch({ type:PRODUCT_SAVE_SUCCESS, payload: data });
