@@ -256,7 +256,8 @@ transform: translateX(0);
 }
 
 .cart-action{
-  flex: 1 1 20rem;
+  flex: 1 2 20rem;
+  width: 100%;
   background-color: #f8f8f8;
   border-radius: .5rem;
   padding: 1rem;

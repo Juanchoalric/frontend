@@ -31,16 +31,16 @@ function CartScreen(props){
       <ul className="cart-list-container">
         <li>
           <h3>
-            Shopping Cart
+            Carrito de Compra
           </h3>
           <div>
-            Price
+            Precio
           </div>
         </li>
         {
           cartItems.length === 0 ?
             <div>
-              Cart is empty
+              El carrito esta vacio, que esperas para comprar!
           </div>
             :
             cartItems.map(item =>
@@ -73,12 +73,12 @@ function CartScreen(props){
     </div>
     <div className="cart-action">
       <h3>
-        Subtotal ( {cartItems.reduce((a, c) => a + c.qty, 0)} items)
+        total ( {cartItems.reduce((a, c) => a + c.qty, 0)} items)
         :
-         $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+         $ {cartItems.reduce((a, c) => a + c.price, 0)}
       </h3>
       <button onClick={checkoutHandler} className="button primary full-width" disabled={cartItems.length === 0}>
-        Proceed to Checkout
+        Procede a la compra
       </button>
 
     </div>

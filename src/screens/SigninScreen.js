@@ -35,7 +35,7 @@ function SigninScreen (props) {
                     <h2>Registrate</h2>
                 </li>
                 <li>
-                    {loading && <div>Loading...</div>}
+                    {loading && <div>...</div>}
                     {error && <div>{error}</div>}
                 </li>
                 <li>
