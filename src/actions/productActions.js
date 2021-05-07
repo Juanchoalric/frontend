@@ -1,5 +1,6 @@
 import axios from "axios";
-import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS } from "../constants/productConstants"
+import { PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_SAVE_FAIL, PRODUCT_SAVE_REQUEST, PRODUCT_SAVE_SUCCESS } from "../constants/productConstants"
+import Cookie from "js-cookie";
 
 const listProducts = () => async (dispatch) => {
     try {
@@ -10,7 +11,19 @@ const listProducts = () => async (dispatch) => {
         dispatch({type: PRODUCT_LIST_FAIL, payload: error.message});
     }
 }
+const saveProduct = (product) => async(dispatch, getState) => {
+    try {
+        dispatch({type: PRODUCT_SAVE_REQUEST, payload: product});
+        const { userSignin: {userinfo} } = getState();
+        const {new_data} = await axios.post('/api/products', {product}, {headers:{
+            'Authorization': 'Bearer' + userinfo.token
+        }});
 
+        dispatch({ type:PRODUCT_SAVE_SUCCESS, payload: new_data });
+    } catch (error) {
+        dispatch({ type:PRODUCT_SAVE_FAIL, payload: error.message });
+    }
+}
 const detailProducts = (productId) => async (dispatch) => {
     try {
         dispatch({type: PRODUCT_DETAILS_REQUEST, payload: productId});
@@ -21,4 +34,4 @@ const detailProducts = (productId) => async (dispatch) => {
     }
 }
 
-export {listProducts, detailProducts}
+export {listProducts, saveProduct, detailProducts}
