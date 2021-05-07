@@ -57,7 +57,7 @@ function ProductsScreen (props) {
                     <label htmlFor="name">
                         Nombre
                     </label>
-                    <input type="text" name="name" id="name" onChange={(e) => setName(e.target.value)}>
+                    <input type="text" name="name" id="name" onChange={(e) => setName(e.target.value)} required>
 
                     </input>
                 </li>
@@ -65,7 +65,7 @@ function ProductsScreen (props) {
                     <label htmlFor="price">
                         Precio
                     </label>
-                    <input type="text" name="price" id="price" onChange={(e) => setPrice(e.target.value)}>
+                    <input type="text" name="price" id="price" onChange={(e) => setPrice(e.target.value)} required>
 
                     </input>
                 </li>
@@ -73,7 +73,7 @@ function ProductsScreen (props) {
                     <label htmlFor="image">
                         Imagen
                     </label>
-                    <input type="text" name="image" id="image" onChange={(e) => setImage(e.target.value)}>
+                    <input type="text" name="image" id="image" onChange={(e) => setImage(e.target.value)} required>
 
                     </input>
                 </li>
@@ -81,7 +81,7 @@ function ProductsScreen (props) {
                     <label htmlFor="category">
                         Categoria
                     </label>
-                    <input type="text" name="category" id="category" onChange={(e) => setCategory(e.target.value)}>
+                    <input type="text" name="category" id="category" onChange={(e) => setCategory(e.target.value)} required>
 
                     </input>
                 </li>
@@ -89,7 +89,7 @@ function ProductsScreen (props) {
                     <label htmlFor="brand">
                         Marca
                     </label>
-                    <input type="text" name="brand" id="brand" onChange={(e) => setBrand(e.target.value)}>
+                    <input type="text" name="brand" id="brand" onChange={(e) => setBrand(e.target.value)} required>
 
                     </input>
                 </li>
@@ -97,7 +97,7 @@ function ProductsScreen (props) {
                     <label htmlFor="description">
                         Descripcion
                     </label>
-                    <textarea type="text" name="description" id="description" onChange={(e) => setDescription(e.target.value)}>
+                    <textarea type="text" name="description" id="description" onChange={(e) => setDescription(e.target.value)} required>
 
                     </textarea>
                 </li>
