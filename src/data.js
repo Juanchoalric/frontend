@@ -30,6 +30,36 @@ const data ={
         rating: 4.5,
         numReviews: 10
     },
+    {
+        _id:'126',
+        name: "Uno",
+        cateogory: "Cars",
+        image: "/images/auto.jpg",
+        price: 60,
+        brand: "Volvo",
+        rating: 4.5,
+        numReviews: 10
+    },
+    {
+        _id:'127',
+        name: "Uno",
+        cateogory: "Cars",
+        image: "/images/auto.jpg",
+        price: 60,
+        brand: "Volvo",
+        rating: 4.5,
+        numReviews: 10
+    },
+    {
+        _id:'128',
+        name: "Uno",
+        cateogory: "Cars",
+        image: "/images/auto.jpg",
+        price: 60,
+        brand: "Yamaha",
+        rating: 4.5,
+        numReviews: 10
+    },
 ]
 }
 export default data
