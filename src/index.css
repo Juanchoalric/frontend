@@ -72,7 +72,7 @@ a:hover{
 
 .footer {
   grid-area: footer;
-  background-color: darkslategrey;
+  background-color: darkcyan;
   color: white;
   display: flex;
   justify-content: center;
@@ -86,6 +86,7 @@ a:hover{
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: space-evenly
 }
 
 .products li {
@@ -191,7 +192,7 @@ transform: translateX(0);
 }
 
 .details-action {
-  flex: 1 1 30rem;
+  flex: 10 1 30rem;
 }
 
 .details-info ul, .details-action ul {
@@ -208,7 +209,6 @@ transform: translateX(0);
 }
 
 .details-action {
-  border: .1rem #808080 solid;
   border-radius: .5rem;
   background-color: #f8f8f8f8;
   padding: 1rem;
@@ -246,7 +246,7 @@ transform: translateX(0);
 
 .cart {
   margin: 1rem;
-  display: flex;
+  display: flexbox;
   flex-wrap: wrap;
   align-items: flex-start;
 }
@@ -256,9 +256,8 @@ transform: translateX(0);
 }
 
 .cart-action{
-  flex: 1 2 20rem;
+  flex: 5 2 20rem;
   width: 100%;
-  background-color: #f8f8f8;
   border-radius: .5rem;
   padding: 1rem;
 }
@@ -317,7 +316,6 @@ transform: translateX(0);
   flex-direction: column;
   width: 32rem;
   padding: 2rem;
-  border: .1rem #c0c0c0 solid;
   border-radius: .5rem;
   list-style-type: none;
 }

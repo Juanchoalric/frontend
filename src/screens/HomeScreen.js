@@ -32,7 +32,6 @@ function HomeScreen (props) {
                                 </div>
                                 <div class="product-brand">{product.brand}</div>
                                 <div class="product-price">${product.price}</div>
-                                <div class="product-rating">{product.rating} Stars ({product.numReviews})</div>
                             </div>
                         </li>
                 )
