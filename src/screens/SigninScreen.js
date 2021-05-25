@@ -14,7 +14,7 @@ function SigninScreen (props) {
     const dispatch = useDispatch();
     useEffect(() => {
         if (userInfo) {
-            props.history.push("/")
+            
         }
 
         return ()=> {
@@ -26,6 +26,7 @@ function SigninScreen (props) {
         e.preventDefault();
 
         dispatch(signin(email, password));
+        props.history.push("/");
     }
 
     return <div className="form">

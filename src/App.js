@@ -28,7 +28,7 @@ function App() {
                     <Link to="/">Kioto</Link>
                 </div>
                 <div className="header-links">
-                    <a href="cart.html">Carrito</a>
+                    <a href="cart.html">Carrito&nbsp;&nbsp;</a>
                     {
                         userInfo ? <Link to="/profile">{userInfo.name}</Link>:
                         <Link to="/signin">Registrate</Link>
@@ -49,7 +49,7 @@ function App() {
             </aside>
             <main className="main">
                 <div className="content">
-                    <Route path="/products" component={ProductsScreen} />
+                    <Route path="/products" exact={true} component={ProductsScreen} />
                     <Route path="/register" component={RegisterScreen} />
                     <Route path="/signin" component={SigninScreen} /> 
                     <Route path="/products/:id" component={ProductScreen} />
