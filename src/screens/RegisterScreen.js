@@ -73,6 +73,9 @@ function RegisterScreen (props) {
 
                     </input>
                 </li>
+                <p>
+                <script src="https://vivirenremoto.github.io/doomcaptcha/script.js?version=11" sound="on" countdown="on" label="Captcha" enemies="4"></script>
+                </p>
                 <li>
                     <button type="submit" className="button primary">Ingresar</button>
                 </li>

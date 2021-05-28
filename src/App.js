@@ -14,11 +14,16 @@ function App() {
   const userSignin = useSelector(state=>state.userSignin);
   const {userInfo} = userSignin;
 
+  var admin_ = false;
+  if (userInfo!== null && typeof userInfo !== 'undefined'){
+        admin_ = userInfo.isAdmin;
+    
+    }
   const openMenu = () => document.querySelector(".sidebar").classList.add("open");
   const closeMenu = () => document.querySelector(".sidebar").classList.remove("open");
-
   return (
     <BrowserRouter>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div className="grid-container">
             <header className="header">
                 <div className="brand">
@@ -30,8 +35,12 @@ function App() {
                 <div className="header-links">
                     <a href="cart.html">Carrito&nbsp;&nbsp;</a>
                     {
-                        userInfo ? <Link to="/profile">{userInfo.name}</Link>:
+                        userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
                         <Link to="/signin">Registrate</Link>
+                    }
+                    {
+                        admin_ == true ? <Link to="/products">Editar productos&nbsp;&nbsp;</Link>:
+                        <a>&nbsp;&nbsp;</a>
                     }
                 </div>
             </header>
