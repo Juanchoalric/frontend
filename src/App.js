@@ -27,13 +27,10 @@ function App() {
     <div className="grid-container">
             <header className="header">
                 <div className="brand">
-                    <button onClick={openMenu}>
-                        &#9776;
-                    </button>
-                    <Link to="/">Kioto</Link>
+                    <Link to="/">Moto</Link>
                 </div>
                 <div className="header-links">
-                    <a href="cart.html">Carrito&nbsp;&nbsp;</a>
+                <Link to="/cart">Carrito&nbsp;&nbsp;</Link>
                     {
                         userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
                         <Link to="/signin">Registrate</Link>
@@ -44,18 +41,6 @@ function App() {
                     }
                 </div>
             </header>
-            <aside className="sidebar">
-                <h3>Categorias</h3>
-                <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-                <ul>
-                    <li>
-                        <a href="index.html">Cuatris</a>
-                    </li>
-                    <li>
-                        <a href="index.html">Motos</a>
-                    </li>
-                </ul>
-            </aside>
             <main className="main">
                 <div className="content">
                     <Route path="/products" exact={true} component={ProductsScreen} />

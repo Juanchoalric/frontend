@@ -20,9 +20,9 @@ function ProductScreen (props) {
 
     return <div>
         <div className="back-to-result">
-            <Link to="/">Back to results</Link>
+            <Link to="/">Volve al Home</Link>
         </div>
-        {loading ? <div>Loading...</div> :
+        {loading ? <div>Cargando no se vaya...</div> :
             error? <div>{error}</div> :
             (
                 <div className="details">
@@ -35,10 +35,7 @@ function ProductScreen (props) {
                             <h4>{product.name}</h4>
                         </li>
                         <li>
-                            {product.rating} Stars ({product.numReviews} Reviews)
-                        </li>
-                        <li>
-                            Price: <b>${product.price}</b>
+                            Precio: <b>${product.price}</b>
                         </li>
                         <li>
                             Descripcion:
@@ -54,12 +51,9 @@ function ProductScreen (props) {
                             Price: {product.price}
                         </li>
                         <li>
-                            Status: {product.status}
-                        </li>
-                        <li>
                             {product.countInStock > 0?
                             <button onClick={handleAddToCart} className="button primary">
-                              Add to Cart
+                              Agregar al carrito
                             </button>
                             :
                             <div>No tenemos mas Stock</div>    

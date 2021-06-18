@@ -122,9 +122,9 @@ function ProductsScreen (props) {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Action</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Accion</th>
             </tr>
           </thead>
           <tbody>
