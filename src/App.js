@@ -8,11 +8,11 @@ import SigninScreen from './screens/SigninScreen';
 import { useSelector } from 'react-redux';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
-
+import Cookies from "js-cookie";
 function App() {
 
   const userSignin = useSelector(state=>state.userSignin);
-  const {userInfo} = userSignin;
+  var {userInfo} = userSignin;
 
   var admin_ = false;
   if (userInfo!== null && typeof userInfo !== 'undefined'){
@@ -31,9 +31,17 @@ function App() {
                 </div>
                 <div className="header-links">
                 <Link to="/cart">Carrito&nbsp;&nbsp;</Link>
+                    
                     {
                         userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
                         <Link to="/signin">Registrate</Link>
+                    }
+                    {
+                        userInfo ? <Link to='/' onClick={function(e) {
+                            Cookies.remove('userInfo');
+                            window.location.reload();    
+                          }}>Cerrar cesion&nbsp;&nbsp;</Link>:
+                        <a></a>
                     }
                     {
                         admin_ == true ? <Link to="/products">Editar productos&nbsp;&nbsp;</Link>:
