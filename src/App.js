@@ -9,11 +9,13 @@ import { useSelector } from 'react-redux';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import Cookies from "js-cookie";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
+import { useState } from 'react';
 function App() {
 
   const userSignin = useSelector(state=>state.userSignin);
   var {userInfo} = userSignin;
-
   var admin_ = false;
   if (userInfo!== null && typeof userInfo !== 'undefined'){
         admin_ = userInfo.isAdmin;
@@ -21,6 +23,10 @@ function App() {
     }
   const openMenu = () => document.querySelector(".sidebar").classList.add("open");
   const closeMenu = () => document.querySelector(".sidebar").classList.remove("open");
+  const [dropdown, setDropdown] = useState(false);
+  const openCloseDropdown=()=>{
+      setDropdown(!dropdown);
+  }
   return (
     <BrowserRouter>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -30,23 +36,24 @@ function App() {
                     <Link to="/">Moto</Link>
                 </div>
                 <div className="header-links">
-                <Link to="/cart">Carrito&nbsp;&nbsp;</Link>
                     
                     {
-                        userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
-                        <Link to="/signin">Registrate</Link>
-                    }
-                    {
-                        userInfo ? <Link to='/' onClick={function(e) {
+                        userInfo ? <Dropdown isOpen={dropdown} toggle={openCloseDropdown}>
+                            <DropdownToggle caret>{userInfo.name}&nbsp;&nbsp;</DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem onClick={function(e) {
                             Cookies.remove('userInfo');
                             window.location.reload();    
-                          }}>Cerrar cesion&nbsp;&nbsp;</Link>:
+                          }}>Cerrar cesion</DropdownItem>
+                          {
+                        admin_ == true ? <DropdownItem tag={Link} to="/products">Editar productos</DropdownItem>:
                         <a></a>
                     }
-                    {
-                        admin_ == true ? <Link to="/products">Editar productos&nbsp;&nbsp;</Link>:
-                        <a>&nbsp;&nbsp;</a>
+                            </DropdownMenu>
+                            </Dropdown>:
+                        <Link to="/signin">Registrate</Link>
                     }
+                <Link to="/cart">Carrito&nbsp;&nbsp;</Link> 
                 </div>
             </header>
             <main className="main">
