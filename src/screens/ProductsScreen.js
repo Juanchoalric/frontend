@@ -74,7 +74,7 @@ function ProductsScreen (props) {
                     <label htmlFor="price">
                         Precio
                     </label>
-                    <input type="text" name="price" id="price" value={price} onChange={(e) => setPrice(e.target.value)}>
+                    <input type="number" name="price" id="price" value={price} onChange={(e) => setPrice(e.target.value)}>
 
                     </input>
                 </li>

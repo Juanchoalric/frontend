@@ -30,6 +30,7 @@ function App() {
   return (
     <BrowserRouter>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="styles/style.css" rel="stylesheet"/>
     <div className="grid-container">
             <header className="header">
                 <div className="brand">
@@ -37,9 +38,9 @@ function App() {
                 </div>
                 <div className="header-links">
                     
-                    {
+                {
                         userInfo ? <Dropdown isOpen={dropdown} toggle={openCloseDropdown}>
-                            <DropdownToggle caret>{userInfo.name}&nbsp;&nbsp;</DropdownToggle>
+                            <DropdownToggle caret>{userInfo.name}</DropdownToggle>
                             <DropdownMenu>
                                 <DropdownItem onClick={function(e) {
                             Cookies.remove('userInfo');
@@ -47,13 +48,19 @@ function App() {
                           }}>Cerrar cesion</DropdownItem>
                           {
                         admin_ == true ? <DropdownItem tag={Link} to="/products">Editar productos</DropdownItem>:
-                        <a></a>
+                        <DropdownItem></DropdownItem>
                     }
+                    <DropdownItem tag={Link} to="/cart">Carrito</DropdownItem>
                             </DropdownMenu>
                             </Dropdown>:
-                        <Link to="/signin">Registrate</Link>
+                            <Dropdown isOpen={dropdown} toggle={openCloseDropdown}>
+                            <DropdownToggle caret>Opciones</DropdownToggle>
+                        <DropdownMenu>
+                            <DropdownItem tag={Link} to="/signin">Registrate</DropdownItem>
+                            <DropdownItem tag={Link} to="/cart">Carrito</DropdownItem>
+                        </DropdownMenu>
+                        </Dropdown>
                     }
-                <Link to="/cart">Carrito&nbsp;&nbsp;</Link> 
                 </div>
             </header>
             <main className="main">
@@ -67,7 +74,9 @@ function App() {
                 </div>
             </main>
             <footer className="footer">
-                Todos los derechos reservados
+                <p>Todos los derechos reservados</p>
+                <p><a href="mailto:hege@example.com">consultas@moto.com</a></p>
+                
             </footer>
         </div>
         </BrowserRouter>
