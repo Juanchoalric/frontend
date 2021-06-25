@@ -9,8 +9,6 @@ import { useSelector } from 'react-redux';
 import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import Cookies from "js-cookie";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from 'reactstrap';
 import { useState } from 'react';
 function App() {
 
@@ -38,29 +36,23 @@ function App() {
                 </div>
                 <div className="header-links">
                     
+                <Link to="/cart">Carrito&nbsp;&nbsp;</Link>
+
                 {
-                        userInfo ? <Dropdown isOpen={dropdown} toggle={openCloseDropdown}>
-                            <DropdownToggle caret>{userInfo.name}</DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem onClick={function(e) {
-                            Cookies.remove('userInfo');
-                            window.location.reload();    
-                          }}>Cerrar cesion</DropdownItem>
-                          {
-                        admin_ == true ? <DropdownItem tag={Link} to="/products">Editar productos</DropdownItem>:
-                        <DropdownItem></DropdownItem>
-                    }
-                    <DropdownItem tag={Link} to="/cart">Carrito</DropdownItem>
-                            </DropdownMenu>
-                            </Dropdown>:
-                            <Dropdown isOpen={dropdown} toggle={openCloseDropdown}>
-                            <DropdownToggle caret>Opciones</DropdownToggle>
-                        <DropdownMenu>
-                            <DropdownItem tag={Link} to="/signin">Registrate</DropdownItem>
-                            <DropdownItem tag={Link} to="/cart">Carrito</DropdownItem>
-                        </DropdownMenu>
-                        </Dropdown>
-                    }
+                    userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
+                    <Link to="/signin">Registrate</Link>
+                }
+                {
+                    userInfo ? <Link to='/' onClick={function(e) {
+                        Cookies.remove('userInfo');
+                        window.location.reload();    
+                    }}>Cerrar cesion&nbsp;&nbsp;</Link>:
+                    <a></a>
+                }
+                {
+                    admin_ == true ? <Link to="/products">Editar productos&nbsp;&nbsp;</Link>:
+                    <a>&nbsp;&nbsp;</a>
+                }
                 </div>
             </header>
             <main className="main">
@@ -74,8 +66,9 @@ function App() {
                 </div>
             </main>
             <footer className="footer">
-                <p>Todos los derechos reservados</p>
-                <p><a href="mailto:hege@example.com">consultas@moto.com</a></p>
+                
+                <p class="right">Todos los derechos reservados</p>
+                <p class="left"><a href="consultas@moto.com">&nbsp;&nbsp;Contacto</a></p>
                 
             </footer>
         </div>
