@@ -6,6 +6,9 @@ function ProductsScreen (props) {
 
     const [id, setId] = useState('');
     const [modalVisible, setModalVisible] = useState(false);
+    const userSignin = useSelector(state=>state.userSignin);
+    var {userInfo} = userSignin;
+    var userName = userInfo.name;
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [image, setImage] = useState('');
@@ -48,7 +51,7 @@ function ProductsScreen (props) {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        dispatch(saveProduct({_id:id, name, price, image, brand, category, description}));
+        dispatch(saveProduct({_id:id, name, price, image, brand, category, description, userName}));
     }
 
     return <div className="content content-margined">
