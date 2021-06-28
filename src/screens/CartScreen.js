@@ -2,10 +2,15 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
+import { saveCartProducts } from '../actions/productActions';
 
 function CartScreen(props){
     
     const cart = useSelector(state => state.cart);
+    const userSignin = useSelector(state=>state.userSignin);
+    const productsCartSave = useSelector(state=>state.saveCartProducts);
+
+    var {userInfo} = userSignin;
 
     const {cartItems} = cart;
 
@@ -23,7 +28,13 @@ function CartScreen(props){
     }, []);
 
     const checkoutHandler = () => {
-        props.history.push("/signin?redirect=shipping")
+      if (userInfo === null)
+      {
+        //props.history.push("/signin?redirect=shipping")
+      } 
+      console.log(cartItems)
+      dispatch(saveCartProducts({cartItems}));
+
     }
 
     return <div className="cart">

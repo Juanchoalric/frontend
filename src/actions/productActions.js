@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_SAVE_FAIL, PRODUCT_SAVE_REQUEST, PRODUCT_SAVE_SUCCESS } from "../constants/productConstants"
+import { PRODUCT_CART_SAVE_FAIL, PRODUCT_CART_SAVE_REQUEST, PRODUCT_CART_SAVE_SUCCESS, PRODUCT_DELETE_FAIL, PRODUCT_DELETE_REQUEST, PRODUCT_DELETE_SUCCESS, PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS, PRODUCT_LIST_FAIL, PRODUCT_LIST_REQUEST, PRODUCT_LIST_SUCCESS, PRODUCT_SAVE_FAIL, PRODUCT_SAVE_REQUEST, PRODUCT_SAVE_SUCCESS } from "../constants/productConstants"
 
 const listProducts = () => async (dispatch) => {
     try {
@@ -34,6 +34,21 @@ const saveProduct = (product) => async(dispatch, getState)=> {
     }
 }
 
+const saveCartProducts = (productsCart) => async(dispatch, getState)=> {
+    try {
+        dispatch({type: PRODUCT_CART_SAVE_REQUEST, payload: productsCart});
+        const {
+            userSignin: {userInfo},
+        } = getState();
+            const {data} = await axios.post("/api/productsCart", productsCart, {headers:{
+                Authorization: "Bearer " + userInfo.token
+            }});
+            dispatch({type: PRODUCT_CART_SAVE_SUCCESS, payload: data});
+    } catch (error) {
+        dispatch({type: PRODUCT_CART_SAVE_FAIL, payload: error.message});
+    }
+}
+
 const deleteProducts = (productId) => async (dispatch, getState) => {
     try {
         const {userSignin: {userInfo}} = getState();
@@ -59,4 +74,4 @@ const detailProducts = (productId) => async (dispatch) => {
     }
 }
 
-export {listProducts, detailProducts, saveProduct, deleteProducts}
+export {listProducts, detailProducts, saveProduct, deleteProducts, saveCartProducts}
