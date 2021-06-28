@@ -46,7 +46,7 @@ function App() {
                     userInfo ? <Link to='/' onClick={function(e) {
                         Cookies.remove('userInfo');
                         window.location.reload();    
-                    }}>Cerrar cesion&nbsp;&nbsp;</Link>:
+                    }}>Cerrar Sesion&nbsp;&nbsp;</Link>:
                     <a></a>
                 }
                 {
