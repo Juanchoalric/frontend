@@ -10,6 +10,8 @@ import RegisterScreen from './screens/RegisterScreen';
 import ProductsScreen from './screens/ProductsScreen';
 import Cookies from "js-cookie";
 import { useState } from 'react';
+import ProfileScreen from './screens/ProfileScreen';
+import AboutScreen from './screens/AboutScreen';
 function App() {
 
   const userSignin = useSelector(state=>state.userSignin);
@@ -35,11 +37,13 @@ function App() {
                     <Link to="/">Moto</Link>
                 </div>
                 <div className="header-links">
+
+                <Link to="/about">About us&nbsp;&nbsp;</Link>
                     
                 <Link to="/cart">Carrito&nbsp;&nbsp;</Link>
 
                 {
-                    userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
+                    userInfo.isAdmin ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
                     <Link to="/signin">Registrate</Link>
                 }
                 {
@@ -62,6 +66,8 @@ function App() {
                     <Route path="/signin" component={SigninScreen} /> 
                     <Route path="/products/:id" component={ProductScreen} />
                     <Route path="/cart/:id?" component={CartScreen} />
+                    <Route path="/profile" component={ProfileScreen} />
+                    <Route path="/about" component={AboutScreen} />
                     <Route path="/" exact={true} component={HomeScreen} />
                 </div>
             </main>

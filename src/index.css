@@ -341,6 +341,40 @@ input {
 }
 
 
+/* About  */
+
+.about-container {
+  font-family: Helvetica;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  margin-top: 4rem;
+  text-align: center;
+
+}
+
+.about-title {
+  color: #008B8B;
+  font-size: 5rem;
+  letter-spacing: 5px;
+  margin-bottom: 2rem;
+}
+
+.about-second-title {
+  color: #777;
+  font-size: 3rem;
+  font-weight: 400;
+
+}
+
+.about-image {
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+}
+
+.img-about {
+  padding: 10px;
+}
 
 
 
