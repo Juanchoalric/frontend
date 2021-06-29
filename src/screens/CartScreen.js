@@ -11,7 +11,7 @@ function CartScreen(props){
     const productsCartSave = useSelector(state=>state.saveCartProducts);
 
     var {userInfo} = userSignin;
-
+    var userName = userInfo.name;
     const {cartItems} = cart;
 
     const productId = props.match.params.id;
@@ -32,8 +32,13 @@ function CartScreen(props){
       {
         //props.history.push("/signin?redirect=shipping")
       } 
-      console.log(cartItems)
-      dispatch(saveCartProducts({cartItems}));
+      let productsCart = [];
+      console.log(userName)
+      cartItems.forEach(elements => {
+        productsCart.push({"buyer": userName, "product": elements.id, "name": elements.name, "price": elements.price, "userName": elements.userName, "image": elements.image})
+      });
+      console.log(productsCart)
+      dispatch(saveCartProducts({productsCart}));
 
     }
 
