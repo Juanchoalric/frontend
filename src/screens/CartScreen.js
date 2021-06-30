@@ -10,8 +10,13 @@ function CartScreen(props){
     const userSignin = useSelector(state=>state.userSignin);
     const productsCartSave = useSelector(state=>state.saveCartProducts);
 
-    var {userInfo} = userSignin;
-    var userName = userInfo.name;
+    if (userSignin != null){
+      //var {userInfo} = userSignin;
+      var userName = userSignin.name;
+    }
+    else{
+      userName= null
+    }
     const {cartItems} = cart;
 
     const productId = props.match.params.id;
@@ -28,17 +33,22 @@ function CartScreen(props){
     }, []);
 
     const checkoutHandler = () => {
-      if (userInfo === null)
+      console.log(userSignin)
+      if (!userSignin)
       {
-        //props.history.push("/signin?redirect=shipping")
+        props.history.push("/signin?redirect=shipping")
       } 
-      let productsCart = [];
-      console.log(userName)
-      cartItems.forEach(elements => {
+      else {
+        let productsCart = [];
+        console.log(userSignin)
+        cartItems.forEach(elements => {
         productsCart.push({"buyer": userName, "product": elements.id, "name": elements.name, "price": elements.price, "userName": elements.userName, "image": elements.image})
-      });
-      console.log(productsCart)
-      dispatch(saveCartProducts({productsCart}));
+        });
+        props.history.push("/")
+        console.log(productsCart)
+        dispatch(saveCartProducts({productsCart}));
+      }
+      
 
     }
 
