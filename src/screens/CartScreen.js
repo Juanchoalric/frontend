@@ -44,7 +44,7 @@ function CartScreen(props){
         cartItems.forEach(elements => {
         productsCart.push({"buyer": userName, "product": elements.id, "name": elements.name, "price": elements.price, "userName": elements.userName, "image": elements.image})
         });
-        props.history.push("/")
+        props.history.push("/shipingAdress")
         console.log(productsCart)
         dispatch(saveCartProducts({productsCart}));
       }

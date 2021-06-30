@@ -8,6 +8,9 @@ function RegisterScreen (props) {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [location, setLocation] = useState('');
+    const [address, setAddress] = useState('');
+    const [addressNumber, setAddressNumber] = useState('');
     const [rePassword, setRePassword] = useState('');
 
 
@@ -28,7 +31,7 @@ function RegisterScreen (props) {
     const submitHandler = (e) => {
         e.preventDefault();
 
-        dispatch(register(name, email, password));
+        dispatch(register(name, email, password, address, addressNumber, location));
     }
 
     return <div className="form">
@@ -54,6 +57,30 @@ function RegisterScreen (props) {
                         Nombre
                     </label>
                     <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
+
+                    </input>
+                </li>
+                <li>
+                    <label htmlFor="Address">
+                        Calle
+                    </label>
+                    <input type="name" name="name" id="name" onChange={(e) => setAddress(e.target.value)}>
+
+                    </input>
+                </li>
+                <li>
+                    <label htmlFor="addressNumber">
+                        Numero
+                    </label>
+                    <input type="name" name="name" id="name" onChange={(e) => setAddressNumber(e.target.value)}>
+
+                    </input>
+                </li>
+                <li>
+                    <label htmlFor="location">
+                        Localidad
+                    </label>
+                    <input type="name" name="name" id="name" onChange={(e) => setLocation(e.target.value)}>
 
                     </input>
                 </li>
