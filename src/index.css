@@ -66,6 +66,10 @@ a:hover{
   color: coral;
 }
 
+.image-home {
+  text-align: center;
+}
+
 .main {
   grid-area: main;
 }
@@ -110,13 +114,30 @@ a:hover{
 }
 
 .product-image {
-  max-width: 34rem;
-  max-height: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  display: block;
+}
+
+.product-image:hover {
+  width: 75%;
 }
 
 .product-name {
   font-size: 2rem;
   font-weight: bold;
+  color: #008B8B;
+}
+
+.product-name a {
+  color: #3a3a3a;
+  text-decoration: None;
+}
+
+.product-name a:hover {
+  color: #008B8B;
+  text-decoration: None;
 }
 
 .product-brand {
