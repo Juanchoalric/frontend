@@ -9,11 +9,12 @@ function CartScreen(props){
     
     const cart = useSelector(state => state.cart);
     const userSignin = useSelector(state=>state.userSignin);
+    const {userInfo} = userSignin;
     const productsCartSave = useSelector(state=>state.saveCartProducts);
 
-    if (userSignin != null){
+    if (userInfo != null){
       //var {userInfo} = userSignin;
-      const {userInfo} = userSignin
+      //const {userInfo} = userSignin
       console.log(userInfo)
       var userName = userInfo.name;
       console.log("Imprimo el usuario: " + userName)
@@ -44,7 +45,7 @@ function CartScreen(props){
 
     const checkoutHandler = () => {
       console.log(userSignin)
-      if (!userSignin)
+      if (!userInfo)
       {
         props.history.push("/signin?redirect=shipping")
       } 

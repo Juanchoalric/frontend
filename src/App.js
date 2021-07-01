@@ -17,8 +17,10 @@ function App() {
   const userSignin = useSelector(state=>state.userSignin);
   var {userInfo} = userSignin;
   var admin_ = false;
+  var userName = null;
   if (userInfo!== null && typeof userInfo !== 'undefined'){
         admin_ = userInfo.isAdmin;
+        userName = userInfo.name;
     
     }
   const openMenu = () => document.querySelector(".sidebar").classList.add("open");
@@ -27,6 +29,7 @@ function App() {
   const openCloseDropdown=()=>{
       setDropdown(!dropdown);
   }
+  console.log(userInfo)
   return (
     <BrowserRouter>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -41,9 +44,12 @@ function App() {
                 <Link to="/about">About us&nbsp;&nbsp;</Link>
                     
                 <Link to="/cart">Carrito&nbsp;&nbsp;</Link>
+                
                 {
-                    userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
-                    <Link to="/signin">Registrate</Link>
+                    userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>: ""
+                }
+                {
+                    userName == null? <Link to="/signin">Registrate&nbsp;&nbsp;</Link>: ""
                 }
                 {
                     userInfo ? <Link to='/' onClick={function(e) {

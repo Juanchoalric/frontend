@@ -33,7 +33,7 @@ function SigninScreen (props) {
         <form onSubmit={submitHandler}>
             <ul className="form-container">
                 <li>
-                    <h2>Registrate</h2>
+                    <h2>Ingresa</h2>
                 </li>
                 <li>
                     {loading && <div>Loading...</div>}

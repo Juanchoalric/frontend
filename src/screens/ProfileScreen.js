@@ -17,9 +17,15 @@ function ProfileScreen (props) {
 
     const userSignin = useSelector(state=>state.userSignin);
 
-    const {userInfo} = userSignin
+    const {userInfo} = userSignin;
+    let userName = null;
+    var admin_ = false;
+    if (userInfo!== null && typeof userInfo !== 'undefined'){
+        admin_ = userInfo.isAdmin;
+        userName = userInfo.buyer;
+    }
     console.log(productsBought)
-    if (userInfo.isAdmin){
+    if (admin_){
 
         let adminProducts = []
 
@@ -67,9 +73,9 @@ function ProfileScreen (props) {
         </table>
       </div>
     } else {
-
-        let adminProducts = []
-
+        if (userName != null){
+            let adminProducts = []
+        
         productsBought.forEach(element => {
             if (element.buyer === userInfo.name) {
                 console.log(userInfo.userName)
@@ -113,8 +119,12 @@ function ProfileScreen (props) {
           </tbody>
         </table>
       </div>
-    }
+    
+        }
 
+        return ""
+        
+    }
     
 }
 
