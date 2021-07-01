@@ -24,7 +24,6 @@ function ProfileScreen (props) {
         let adminProducts = []
 
         productsBought.forEach(element => {
-            console.log(userInfo.name)
             if (element.userName === userInfo.name) {
                 console.log(userInfo.userName)
                 adminProducts.push(element)
@@ -68,6 +67,16 @@ function ProfileScreen (props) {
         </table>
       </div>
     } else {
+
+        let adminProducts = []
+
+        productsBought.forEach(element => {
+            if (element.buyer === userInfo.name) {
+                console.log(userInfo.userName)
+                adminProducts.push(element)
+            }
+        });
+
         return loading? <div>LOADING...</div>:
         error? <div>{error}</div>:
         <div className="product-list">
