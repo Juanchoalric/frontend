@@ -42,7 +42,7 @@ function App() {
                     
                 <Link to="/cart">Carrito&nbsp;&nbsp;</Link>
                 {
-                    userInfo.isAdmin ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
+                    userInfo ? <Link to="/profile">{userInfo.name}&nbsp;&nbsp;</Link>:
                     <Link to="/signin">Registrate</Link>
                 }
                 {
