@@ -15,22 +15,98 @@ function ProfileScreen (props) {
         }
     }, [])
 
-    return loading? <div>LOADING...</div>:
-        error? <div>{error}</div>:
-        <ul className="products">
-            {
-                productsBought? productsBought.map(product=>
-                    <li key={product._id}>
-                        <div className="product">
-                            <div className="product">
-                                {product.name}
-                            </div>
-                        </div>
-                    </li>)
-            :
-            <div>No tiene productos en compra</div>
+    const userSignin = useSelector(state=>state.userSignin);
+
+    const {userInfo} = userSignin
+    console.log(productsBought)
+    if (userInfo.isAdmin){
+
+        let adminProducts = []
+
+        productsBought.forEach(element => {
+            console.log(userInfo.name)
+            if (element.userName === userInfo.name) {
+                console.log(userInfo.userName)
+                adminProducts.push(element)
             }
-        </ul>
+        });
+
+        return loading? <div>LOADING...</div>:
+        error? <div>{error}</div>:
+        <div className="product-list">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Localidad</th>
+              <th>Calle</th>
+              <th>Numero</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {adminProducts.map((product) => (
+              <tr key={product._id}>
+                <td>{product._id}</td>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>{product.location}</td>
+                <td>{product.address}</td>
+                <td>{product.addressNumber}</td>
+                <td>
+                  <button
+                    className="button"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    } else {
+        return loading? <div>LOADING...</div>:
+        error? <div>{error}</div>:
+        <div className="product-list">
+        <table className="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Localidad</th>
+              <th>Calle</th>
+              <th>Numero</th>
+              <th>Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {productsBought.map((product) => (
+              <tr key={product._id}>
+                <td>{product._id}</td>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>{product.location}</td>
+                <td>{product.address}</td>
+                <td>{product.addressNumber}</td>
+                <td>
+                  <button
+                    className="button"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    }
+
+    
 }
 
 export default ProfileScreen;

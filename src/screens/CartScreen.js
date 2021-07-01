@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { saveCartProducts } from '../actions/productActions';
+import { signin } from '../actions/userActions';
 
 function CartScreen(props){
     
@@ -12,10 +13,19 @@ function CartScreen(props){
 
     if (userSignin != null){
       //var {userInfo} = userSignin;
-      var userName = userSignin.name;
+      const {userInfo} = userSignin
+      console.log(userInfo)
+      var userName = userInfo.name;
+      console.log("Imprimo el usuario: " + userName)
+      var address = userInfo.address;
+      var addressNumber = userInfo.addressNumber;
+      var location = userInfo.location;
     }
     else{
       userName= null
+      addressNumber = null
+      address = null
+      location = null
     }
     const {cartItems} = cart;
 
@@ -42,9 +52,9 @@ function CartScreen(props){
         let productsCart = [];
         console.log(userSignin)
         cartItems.forEach(elements => {
-        productsCart.push({"buyer": userName, "product": elements.id, "name": elements.name, "price": elements.price, "userName": elements.userName, "image": elements.image})
+        productsCart.push({"address": address, "addressNumber": addressNumber, "location": location, "buyer": userName, "product": elements.id, "name": elements.name, "price": elements.price, "userName": elements.userName, "image": elements.image})
         });
-        props.history.push("/shipingAdress")
+        props.history.push("/")
         console.log(productsCart)
         dispatch(saveCartProducts({productsCart}));
       }
