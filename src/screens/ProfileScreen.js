@@ -15,12 +15,12 @@ function ProfileScreen (props) {
         }
     }, [])
 
-    const userSignin = useSelector(state=>state.userSignin);
+    let userSignin = useSelector(state=>state.userSignin);
 
-    const {userInfo} = userSignin;
+    let {userInfo} = userSignin;
     let userName = null;
     var admin_ = false;
-    if (userInfo!== null && typeof userInfo !== 'undefined'){
+    if (userInfo){
         admin_ = userInfo.isAdmin;
         userName = userInfo.buyer;
     }
@@ -73,6 +73,7 @@ function ProfileScreen (props) {
         </table>
       </div>
     } else {
+        console.log(userName);
         if (userName != null){
             let adminProducts = []
         
@@ -122,7 +123,7 @@ function ProfileScreen (props) {
     
         }
 
-        return ""
+        return "hola"
         
     }
     
