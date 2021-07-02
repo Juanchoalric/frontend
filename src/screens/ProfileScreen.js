@@ -52,7 +52,7 @@ function ProfileScreen (props) {
     var admin_ = false;
     if (userInfo){
         admin_ = userInfo.isAdmin;
-        userName = userInfo.buyer;
+        userName = userInfo.name;
     }
     if (admin_){
 
