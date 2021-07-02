@@ -167,6 +167,7 @@ function ProfileScreen (props) {
         
         productsBought.forEach(element => {
             if (element.buyer === userInfo.name) {
+                console.log(element.buyer)
                 adminProducts.push(element)
             }
         });
@@ -247,7 +248,7 @@ function ProfileScreen (props) {
             </tr>
           </thead>
           <tbody>
-            {productsBought.map((product) => (
+            {adminProducts.map((product) => (
               <tr key={product._id}>
                 <td>{product._id}</td>
                 <td>{product.name}</td>
