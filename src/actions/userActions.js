@@ -15,6 +15,7 @@ const signin = (email, password) => async (dispatch) => {
     } catch (error) {
         dispatch({type: USER_SIGNIN_FAIL, payload: error.message});
         alert("Usuario o contraseña incorrectos")
+        window.location.reload()
     }
 
 }
