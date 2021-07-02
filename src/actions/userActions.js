@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 import { useSelector } from 'react-redux';
+import {Redirect} from "react-router-dom";
 import { USER_SIGNIN_FAIL, USER_SIGNIN_REQUEST, USER_SIGNIN_SUCCESS, USER_REGISTER_REQUEST, USER_REGISTER_SUCCESS, USER_REGISTER_FAIL, USER_UPDATE_REQUEST, USER_UPDATE_SUCCESS, USER_UPDATE_FAIL } from "../constants/userConstants";
 
 const signin = (email, password) => async (dispatch) => {
@@ -9,8 +10,11 @@ const signin = (email, password) => async (dispatch) => {
         const {data} = await axios.post("/api/users/signin", {email, password});
         dispatch({type: USER_SIGNIN_SUCCESS, payload: data});
         Cookies.set('userInfo', JSON.stringify(data));
+        window.location.href = "/";
+        <Redirect  to='/'></Redirect>
     } catch (error) {
         dispatch({type: USER_SIGNIN_FAIL, payload: error.message});
+        alert("Usuario o contraseña no son correctos")
     }
 
 }

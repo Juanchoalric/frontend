@@ -22,7 +22,6 @@ function SigninScreen (props) {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(signin(email, password));
-        props.history.push("/");
     }
 
     return <div className="form">
