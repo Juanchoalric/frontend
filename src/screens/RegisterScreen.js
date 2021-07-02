@@ -85,7 +85,7 @@ function RegisterScreen (props) {
                 </li>
                 <li>
                     <label htmlFor="password">
-                        Contrasenia
+                        Contraseña
                     </label>
                     <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} required>
 
@@ -93,7 +93,7 @@ function RegisterScreen (props) {
                 </li>
                 <li>
                     <label htmlFor="rePassword">
-                        Re-escribi tu contrasenia
+                        Re-escribi tu contraseña
                     </label>
                     <input type="password" name="rePassword" id="rePassword" onChange={(e) => setRePassword(e.target.value)} required>
 

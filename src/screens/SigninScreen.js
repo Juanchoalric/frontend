@@ -44,7 +44,7 @@ function SigninScreen (props) {
                 </li>
                 <li>
                     <label htmlFor="password">
-                        Contrasenia
+                        Contraseña
                     </label>
                     <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} required>
 
