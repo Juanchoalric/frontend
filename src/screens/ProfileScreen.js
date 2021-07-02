@@ -43,7 +43,8 @@ function ProfileScreen (props) {
         e.preventDefault();
         console.log("Esto tiene el userInfo: " + userInfo)
         if (userInfo !== null){
-          dispatch(updateUser({location, address, addressNumber, password, email}));
+          let name = userInfo.name;
+          dispatch(updateUser({name:name,location, address, addressNumber, password, email}));
         }
     }
     
@@ -172,6 +173,66 @@ function ProfileScreen (props) {
 
         return loading? <div>LOADING...</div>:
         error? <div>{error}</div>:
+        <div>
+            <div className="form">
+        <form onSubmit={submitHandler}>
+            <ul className="form-container">
+                <li>
+                    <h2>Cambia tus datos</h2>
+                </li>
+                <li>
+                    {loading && <div>Loading...</div>}
+                    {error && <div>{error}</div>}
+                </li>
+                <li>
+                    <label htmlFor="email">
+                        Email
+                    </label>
+                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+
+                    </input>
+                </li>
+                <li>
+                    <label htmlFor="Address">
+                        Calle
+                    </label>
+                    <input type="name" name="name" id="name" onChange={(e) => setAddress(e.target.value)}>
+
+                    </input>
+                </li>
+                <li>
+                    <label htmlFor="addressNumber">
+                        Numero
+                    </label>
+                    <input type="name" name="name" id="name" onChange={(e) => setAddressNumber(e.target.value)}>
+
+                    </input>
+                </li>
+                <li>
+                    <label htmlFor="location">
+                        Localidad
+                    </label>
+                    <input type="name" name="name" id="name" onChange={(e) => setLocation(e.target.value)}>
+
+                    </input>
+                </li>
+                <li>
+                    <label htmlFor="password">
+                        Contrasenia
+                    </label>
+                    <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)}>
+
+                    </input>
+                </li>
+                <li>
+                    <button type="submit" className="button primary">Cambiar</button>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <div>
+        <h1 className="profile-sellers-title">Tus Compras</h1>
+    </div>
         <div className="product-list">
         <table className="table">
           <thead>
@@ -206,7 +267,7 @@ function ProfileScreen (props) {
           </tbody>
         </table>
       </div>
-    
+      </div>
         }
 
         return "hola"

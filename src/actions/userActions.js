@@ -21,7 +21,7 @@ const updateUser = (user) => async(dispatch, getState)=> {
         const userSignin = useSelector(state=>state.userSignin);
         var {userInfo} = userSignin;
             
-            let {name} = userInfo.name
+            let name = userInfo.name
             console.log("Nombre que va como id: " + name)
             const {data} = await axios.put("/api/users/" + name, user, {headers:{
                 Authorization: "Bearer " + userInfo.token
