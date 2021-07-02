@@ -406,12 +406,18 @@ input {
 }
 
 .about-image {
-  margin-top: 10rem;
   margin-bottom: 5rem;
+  
 }
 
 .img-about {
   padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  height: 300px;
+  object-fit: cover;
+  display: inline-block;
 }
 
 
