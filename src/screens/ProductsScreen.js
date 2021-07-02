@@ -73,6 +73,7 @@ function ProductsScreen (props) {
         if (userInfo !== null){
           let userName = userInfo.name;
           dispatch(saveProduct({_id:id, name, price, image, brand, category, description, userName}));
+          alert('El producto ha sido guardado exitosamente')
         }
     }
 

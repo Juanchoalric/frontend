@@ -55,7 +55,7 @@ function App() {
                         Cookies.remove('userInfo');
                         window.location.reload();    
                     }}>Cerrar Sesion&nbsp;&nbsp;</Link>:
-                    <a></a>
+                    ""
                 }
                 {
                     admin_ == true ? <Link to="/products">Editar productos&nbsp;&nbsp;</Link>:
