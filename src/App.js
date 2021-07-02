@@ -55,7 +55,9 @@ function App() {
                 {
                     userInfo ? <Link to='/' onClick={function(e) {
                         Cookies.remove('userInfo');
-                        history.push("/", { from: "/" }); 
+                        window.location.reload(); 
+                        history.push("/", { from: "/" });
+                        
                     }}>Cerrar Sesion&nbsp;&nbsp;</Link>:
                     ""
                 }

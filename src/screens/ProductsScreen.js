@@ -21,7 +21,10 @@ function ProductsScreen (props) {
     const productDelete = useSelector(state=>state.productDelete);
     const {loading: loadingDelete, success: successDelete, error: errorDelete} = productDelete;
     const dispatch = useDispatch();
-
+    var admin_= null;
+    if (userInfo){
+      admin_ = userInfo.isAdmin;
+    }
     useEffect(() => {
         if (successSave) {
           setModalVisible(false);
@@ -76,7 +79,7 @@ function ProductsScreen (props) {
           alert('El producto ha sido guardado exitosamente')
         }
     }
-
+    if (admin_){
     return <div className="content content-margined">
         <div className="form">
         <form onSubmit={submitHandler}>
@@ -177,4 +180,8 @@ function ProductsScreen (props) {
     </div>
 }
 
+else{
+return <div style={"width:800px; margin:0 auto;"}><img src="https://http.cat/401.jpg" alt="401"></img></div>
+}
+}
 export default ProductsScreen;
