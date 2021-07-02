@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { listBuyedProducts } from '../actions/productActions';
+import { listBuyedProducts, deleteProductsBought } from '../actions/productActions';
 import { updateUser } from '../actions/userActions';
 
 function ProfileScreen (props) {
@@ -33,6 +33,10 @@ function ProfileScreen (props) {
     };
 
     let {userInfo} = userSignin;
+
+    const deleteHandler = (product) => {
+        dispatch(deleteProductsBought(product._id));   
+    }
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -145,6 +149,7 @@ function ProfileScreen (props) {
                 <td>
                   <button
                     className="button"
+                    onClick={() => deleteHandler(product)}
                   >
                     Cancelar
                   </button>

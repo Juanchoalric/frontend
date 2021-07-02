@@ -74,6 +74,21 @@ const deleteProducts = (productId) => async (dispatch, getState) => {
     }
 }
 
+const deleteProductsBought = (productId) => async (dispatch, getState) => {
+    try {
+        const {userSignin: {userInfo}} = getState();
+        dispatch({type: PRODUCT_DELETE_REQUEST, payload: productId});
+        const {data} = await axios.delete("/api/productsCart/"+productId, {
+            headers: {
+                Authorization: "Bearer " + userInfo.token
+            }
+        });
+        dispatch({type: PRODUCT_DELETE_SUCCESS, payload:data, success: true});
+    } catch (error) {
+        dispatch({type:PRODUCT_DELETE_FAIL, payload:error.message});
+    }
+}
+
 const detailProducts = (productId) => async (dispatch) => {
     try {
         dispatch({type: PRODUCT_DETAILS_REQUEST, payload: productId});
@@ -84,4 +99,4 @@ const detailProducts = (productId) => async (dispatch) => {
     }
 }
 
-export {listProducts, detailProducts, saveProduct, deleteProducts, saveCartProducts, listBuyedProducts}
+export {listProducts, detailProducts, saveProduct, deleteProducts, saveCartProducts, listBuyedProducts, deleteProductsBought}
