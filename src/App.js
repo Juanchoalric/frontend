@@ -1,5 +1,6 @@
 import data from './data'
 import {BrowserRouter, Link, Route} from "react-router-dom";
+import { createHashHistory } from 'history'
 import './App.css';
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
@@ -18,6 +19,7 @@ function App() {
   var {userInfo} = userSignin;
   var admin_ = false;
   var userName = null;
+  let history = createHashHistory();
   if (userInfo!== null && typeof userInfo !== 'undefined'){
         admin_ = userInfo.isAdmin;
         userName = userInfo.name;
@@ -53,7 +55,7 @@ function App() {
                 {
                     userInfo ? <Link to='/' onClick={function(e) {
                         Cookies.remove('userInfo');
-                        window.location.reload();    
+                        history.push("/", { from: "/" }); 
                     }}>Cerrar Sesion&nbsp;&nbsp;</Link>:
                     ""
                 }
