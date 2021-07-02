@@ -41,7 +41,6 @@ function ProductsScreen (props) {
         })
       }
       const HandleFileInputChange = (e) =>{
-        // fileInputState y setFileInputState son image y setImage
         e.preventDefault();
         const file = e.target.files[0];
         const reader = new FileReader();
@@ -49,7 +48,6 @@ function ProductsScreen (props) {
         reader.onloadend = () => {
           setImage(reader.result);
         }
-        // uploadImage(image);
 
       }
       const uploadImage = (base64EncodedImage) =>{
@@ -68,7 +66,7 @@ function ProductsScreen (props) {
     };
 
     const deleteHandler = (product) => {
-        dispatch(deleteProducts(product._id));   
+        dispatch(deleteProducts(product._id));
     }
 
     const submitHandler = (e) => {
@@ -76,7 +74,6 @@ function ProductsScreen (props) {
         if (userInfo !== null){
           let userName = userInfo.name;
           dispatch(saveProduct({_id:id, name, price, image, brand, category, description, userName}));
-          alert('El producto ha sido guardado exitosamente')
         }
     }
     if (admin_){

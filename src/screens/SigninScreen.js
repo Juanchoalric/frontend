@@ -22,6 +22,7 @@ function SigninScreen (props) {
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(signin(email, password));
+        console.log(signin(email, password))
         props.history.push("/");
     }
 
