@@ -244,7 +244,6 @@ function ProfileScreen (props) {
               <th>Localidad</th>
               <th>Calle</th>
               <th>Numero</th>
-              <th>Accion</th>
             </tr>
           </thead>
           <tbody>
@@ -256,13 +255,6 @@ function ProfileScreen (props) {
                 <td>{product.location}</td>
                 <td>{product.address}</td>
                 <td>{product.addressNumber}</td>
-                <td>
-                  <button
-                    className="button"
-                  >
-                    Eliminar
-                  </button>
-                </td>
               </tr>
             ))}
           </tbody>
@@ -274,62 +266,6 @@ function ProfileScreen (props) {
         return loading? <div>LOADING...</div>:
         error? <div>{error}</div>:
         <div>
-        <div className="form">
-        <form onSubmit={submitHandler}>
-            <ul className="form-container">
-                <li>
-                    <h2>Cambia tus datos</h2>
-                </li>
-                <li>
-                    {loading && <div>Loading...</div>}
-                    {error && <div>{error}</div>}
-                </li>
-                <li>
-                    <label htmlFor="email">
-                        Email
-                    </label>
-                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
-
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="Address">
-                        Calle
-                    </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setAddress(e.target.value)}>
-
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="addressNumber">
-                        Numero
-                    </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setAddressNumber(e.target.value)}>
-
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="location">
-                        Localidad
-                    </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setLocation(e.target.value)}>
-
-                    </input>
-                </li>
-                <li>
-                    <label htmlFor="password">
-                        Contrasenia
-                    </label>
-                    <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)}>
-
-                    </input>
-                </li>
-                <li>
-                    <button type="submit" className="button primary">Cambiar</button>
-                </li>
-            </ul>
-        </form>
-    </div>
     </div>
        }
       }
