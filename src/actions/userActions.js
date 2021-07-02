@@ -17,15 +17,17 @@ const signin = (email, password) => async (dispatch) => {
 
 const updateUser = (user) => async(dispatch, getState)=> {
     try {
+        console.log(user)
         dispatch({type: USER_UPDATE_REQUEST, payload: user});
-        const userSignin = useSelector(state=>state.userSignin);
-        var {userInfo} = userSignin;
-            
-            let name = userInfo.name
-            const {data} = await axios.put("/api/users/" + name, user, {headers:{
-                Authorization: "Bearer " + userInfo.token
-            }});
-            dispatch({type: USER_UPDATE_SUCCESS, payload: data});
+        const {
+            userSignin: {userInfo},
+        } = getState();
+        let name = userInfo.name
+        const {data} = await axios.put(`/api/users/${user.userId}`, user, {headers:{
+            Authorization: "Bearer " + userInfo.token
+        }});
+        dispatch({type: USER_UPDATE_SUCCESS, payload: data});
+        Cookies.set('userInfo', JSON.stringify(data));
     } catch (error) {
         dispatch({type: USER_UPDATE_FAIL, payload: error.message});
     }

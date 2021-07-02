@@ -12,10 +12,7 @@ function ProfileScreen (props) {
     const [address, setAddress] = useState('');
     const [password, setPassword] = useState('');
     const [location, setLocation] = useState('');
-    const [email, setEmail] = useState('');
     const [addressNumber, setAddressNumber] = useState('');
-    const userUpdate = useSelector(state=>state.userUpdate);
-    const {loading: loadingSave, success: successSave, error: errorSave} = userUpdate;
     const productListBought = useSelector(state=>state.productListBought);
     const {productsBought, loading, error} = productListBought;
     let userSignin = useSelector(state=>state.userSignin);
@@ -29,21 +26,19 @@ function ProfileScreen (props) {
 
     const openModal = (user) => {
         setModalVisible(true);
-        setName(user.name);
         setLocation(user.location);
         setAddress(user.address);
         setAddressNumber(user.addressNumber);
         setPassword(user.password);
-        setEmail(user.email);
     };
 
     let {userInfo} = userSignin;
 
     const submitHandler = (e) => {
         e.preventDefault();
+        console.log(userInfo)
         if (userInfo !== null){
-          let name = userInfo.name;
-          dispatch(updateUser({name:name,location, address, addressNumber, password, email}));
+          dispatch(updateUser({userId:userInfo._id,name, location, address, addressNumber, password}));
         }
     }
     
@@ -77,18 +72,18 @@ function ProfileScreen (props) {
                     {error && <div>{error}</div>}
                 </li>
                 <li>
-                    <label htmlFor="email">
-                        Email
+                    <label htmlFor="name">
+                        Nombre
                     </label>
-                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+                    <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
 
                     </input>
                 </li>
                 <li>
-                    <label htmlFor="Address">
+                    <label htmlFor="address">
                         Calle
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setAddress(e.target.value)}>
+                    <input type="address" name="address" id="address" onChange={(e) => setAddress(e.target.value)}>
 
                     </input>
                 </li>
@@ -96,7 +91,7 @@ function ProfileScreen (props) {
                     <label htmlFor="addressNumber">
                         Numero
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setAddressNumber(e.target.value)}>
+                    <input type="addressNumber" name="addressNumber" id="addressNumber" onChange={(e) => setAddressNumber(e.target.value)}>
 
                     </input>
                 </li>
@@ -184,18 +179,18 @@ function ProfileScreen (props) {
                     {error && <div>{error}</div>}
                 </li>
                 <li>
-                    <label htmlFor="email">
-                        Email
+                    <label htmlFor="name">
+                        Nombre
                     </label>
-                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+                    <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
 
                     </input>
                 </li>
                 <li>
-                    <label htmlFor="Address">
+                    <label htmlFor="address">
                         Calle
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setAddress(e.target.value)}>
+                    <input type="address" name="address" id="address" onChange={(e) => setAddress(e.target.value)}>
 
                     </input>
                 </li>
@@ -203,7 +198,7 @@ function ProfileScreen (props) {
                     <label htmlFor="addressNumber">
                         Numero
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setAddressNumber(e.target.value)}>
+                    <input type="addressNumber" name="addressNumber" id="addressNumber" onChange={(e) => setAddressNumber(e.target.value)}>
 
                     </input>
                 </li>
@@ -211,7 +206,7 @@ function ProfileScreen (props) {
                     <label htmlFor="location">
                         Localidad
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setLocation(e.target.value)}>
+                    <input type="location" name="location" id="location" onChange={(e) => setLocation(e.target.value)}>
 
                     </input>
                 </li>
