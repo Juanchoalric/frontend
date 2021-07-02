@@ -29,7 +29,6 @@ function App() {
   const openCloseDropdown=()=>{
       setDropdown(!dropdown);
   }
-  console.log(userInfo)
   return (
     <BrowserRouter>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -79,7 +78,7 @@ function App() {
             <footer className="footer">
                 
                 <p class="right">Todos los derechos reservados</p>
-                <p class="left"><a href="consultas@moto.com">&nbsp;&nbsp;Contacto</a></p>
+                <p class="left"><a href="mailto:consultas@moto.com">&nbsp;&nbsp;Contacto</a></p>
                 
             </footer>
         </div>

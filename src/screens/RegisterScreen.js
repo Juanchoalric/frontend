@@ -30,7 +30,6 @@ function RegisterScreen (props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-
         dispatch(register(name, email, password, address, addressNumber, location));
     }
 
@@ -48,7 +47,7 @@ function RegisterScreen (props) {
                     <label htmlFor="email">
                         Email
                     </label>
-                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)} required>
 
                     </input>
                 </li>
@@ -56,7 +55,7 @@ function RegisterScreen (props) {
                     <label htmlFor="name">
                         Nombre
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
+                    <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)} required>
 
                     </input>
                 </li>
@@ -64,7 +63,7 @@ function RegisterScreen (props) {
                     <label htmlFor="Address">
                         Calle
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setAddress(e.target.value)}>
+                    <input type="name" name="name" id="name" onChange={(e) => setAddress(e.target.value)} required>
 
                     </input>
                 </li>
@@ -72,7 +71,7 @@ function RegisterScreen (props) {
                     <label htmlFor="addressNumber">
                         Numero
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setAddressNumber(e.target.value)}>
+                    <input type="number" name="name" id="name" onChange={(e) => setAddressNumber(e.target.value)} required>
 
                     </input>
                 </li>
@@ -80,7 +79,7 @@ function RegisterScreen (props) {
                     <label htmlFor="location">
                         Localidad
                     </label>
-                    <input type="name" name="name" id="name" onChange={(e) => setLocation(e.target.value)}>
+                    <input type="name" name="name" id="name" onChange={(e) => setLocation(e.target.value)} required>
 
                     </input>
                 </li>
@@ -88,7 +87,7 @@ function RegisterScreen (props) {
                     <label htmlFor="password">
                         Contrasenia
                     </label>
-                    <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)}>
+                    <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} required>
 
                     </input>
                 </li>
@@ -96,7 +95,7 @@ function RegisterScreen (props) {
                     <label htmlFor="rePassword">
                         Re-escribi tu contrasenia
                     </label>
-                    <input type="rePassword" name="rePassword" id="rePassword" onChange={(e) => setRePassword(e.target.value)}>
+                    <input type="password" name="rePassword" id="rePassword" onChange={(e) => setRePassword(e.target.value)} required>
 
                     </input>
                 </li>

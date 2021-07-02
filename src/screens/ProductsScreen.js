@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts, saveProduct, deleteProducts } from '../actions/productActions';
 
@@ -31,7 +31,17 @@ function ProductsScreen (props) {
           //
         };
       }, [successSave, successDelete]);
-
+      const _handleReaderLoaded = (readerEvt) => {
+        let binaryString = readerEvt.target.result
+        this.setState({
+          base64TextString: btoa(binaryString)
+        })
+      }
+      const HandleFileInputChange = (e) =>{
+        // fileInputState y setFileInputState son image y setImage
+        const file = e.target.files[0];
+        
+      }
     const openModal = (product) => {
         setModalVisible(true);
         setId(product._id);
@@ -86,9 +96,8 @@ function ProductsScreen (props) {
                     <label htmlFor="image">
                         Imagen
                     </label>
-                    <input type="text" name="image" id="image" value={image} onChange={(e) => setImage(e.target.value)}>
+                    <input type="file" name="image" id="image" value={image} accept='.jpeg, .png, .jpg' onChange={HandleFileInputChange} />
 
-                    </input>
                 </li>
                 <li>
                     <label htmlFor="category">
