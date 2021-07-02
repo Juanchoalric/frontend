@@ -14,7 +14,7 @@ const signin = (email, password) => async (dispatch) => {
         <Redirect  to='/'></Redirect>
     } catch (error) {
         dispatch({type: USER_SIGNIN_FAIL, payload: error.message});
-        alert("Usuario o contraseña no son correctos")
+        alert("Usuario o contraseña incorrectos")
     }
 
 }
