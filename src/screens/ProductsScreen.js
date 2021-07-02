@@ -46,7 +46,7 @@ function ProductsScreen (props) {
         reader.onloadend = () => {
           setImage(reader.result);
         }
-        uploadImage(image);
+        // uploadImage(image);
 
       }
       const uploadImage = (base64EncodedImage) =>{

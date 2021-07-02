@@ -41,7 +41,6 @@ function ProfileScreen (props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log("Esto tiene el userInfo: " + userInfo)
         if (userInfo !== null){
           let name = userInfo.name;
           dispatch(updateUser({name:name,location, address, addressNumber, password, email}));
@@ -167,7 +166,6 @@ function ProfileScreen (props) {
         
         productsBought.forEach(element => {
             if (element.buyer === userInfo.name) {
-                console.log(element.buyer)
                 adminProducts.push(element)
             }
         });
