@@ -7,24 +7,20 @@ function SigninScreen (props) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const userSignin = useSelector(state=>state.userSignin);
     const {loading, userInfo, error} = userSignin;
-
     const dispatch = useDispatch();
     useEffect(() => {
         if (userInfo) {
-            props.history.push("/")
+            
         }
 
         return ()=> {
             //
         };
     }, [userInfo]);
-
     const submitHandler = (e) => {
         e.preventDefault();
-
         dispatch(signin(email, password));
     }
 
@@ -32,25 +28,25 @@ function SigninScreen (props) {
         <form onSubmit={submitHandler}>
             <ul className="form-container">
                 <li>
-                    <h2>Registrate</h2>
+                    <h2>Ingresa</h2>
                 </li>
                 <li>
                     {loading && <div>Loading...</div>}
                     {error && <div>{error}</div>}
                 </li>
                 <li>
-                    <label htmlfor="email">
+                    <label htmlFor="email">
                         Email
                     </label>
-                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
+                    <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)} required>
 
                     </input>
                 </li>
                 <li>
-                    <label htmlfor="password">
-                        Contrasenia
+                    <label htmlFor="password">
+                        Contraseña
                     </label>
-                    <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)}>
+                    <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} required>
 
                     </input>
                 </li>

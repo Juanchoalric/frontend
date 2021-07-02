@@ -1,5 +1,5 @@
 html {
-  font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem */
+  font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem  62.5%*/
   box-sizing: border-box;
 }
 
@@ -66,6 +66,10 @@ a:hover{
   color: coral;
 }
 
+.image-home {
+  text-align: center;
+}
+
 .main {
   grid-area: main;
 }
@@ -78,9 +82,14 @@ a:hover{
   justify-content: center;
   align-items: center;
 }
-
+.left {
+  float: left;
+}
+.right{
+  float: right;
+  color:white;
 /* Home */
-
+}
 .products {
   display: flex;
   justify-content: center;
@@ -104,14 +113,45 @@ a:hover{
   height: 100%;
 }
 
+.product-list{
+  text-align: -webkit-center;
+}
+
+.profile-sellers-title {
+    text-align-last: center;
+    color: #008B8B;
+    font-size: 5rem;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
 .product-image {
-  max-width: 34rem;
-  max-height: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.product-image:hover {
+  width: 75%;
 }
 
 .product-name {
   font-size: 2rem;
   font-weight: bold;
+  color: #008B8B;
+}
+
+.product-name a {
+  color: #3a3a3a;
+  text-decoration: None;
+}
+
+.product-name a:hover {
+  color: #008B8B;
+  text-decoration: None;
 }
 
 .product-brand {
@@ -176,22 +216,25 @@ transform: translateX(0);
 }
 
 .details-image {
-  flex: 2 1 60rem;
+  flex: .2 1 20rem;
 
 }
 
 .details-image img {
- max-width: 60rem;
- widows: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 .details-info {
   flex: 1 1 30rem;
+  margin-left: 2rem;
   
 }
 
 .details-action {
-  flex: 1 1 30rem;
+  flex: 1 1 20rem;
 }
 
 .details-info ul, .details-action ul {
@@ -336,6 +379,46 @@ input {
 }
 
 
+/* About  */
+
+.about-container {
+  font-family: Helvetica;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 3rem;
+  margin-top: 4rem;
+  text-align: center;
+
+}
+
+.about-title {
+  color: #008B8B;
+  font-size: 5rem;
+  letter-spacing: 5px;
+  margin-bottom: 2rem;
+}
+
+.about-second-title {
+  color: #777;
+  font-size: 3rem;
+  font-weight: 400;
+
+}
+
+.about-image {
+  margin-bottom: 5rem;
+  
+}
+
+.img-about {
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+  height: 300px;
+  object-fit: cover;
+  display: inline-block;
+}
 
 
 

@@ -2,11 +2,30 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../actions/cartActions';
+import { saveCartProducts } from '../actions/productActions';
+import { signin } from '../actions/userActions';
 
 function CartScreen(props){
     
     const cart = useSelector(state => state.cart);
+    const userSignin = useSelector(state=>state.userSignin);
+    const {userInfo} = userSignin;
+    const productsCartSave = useSelector(state=>state.saveCartProducts);
 
+    if (userInfo != null){
+      //var {userInfo} = userSignin;
+      //const {userInfo} = userSignin
+      var userName = userInfo.name;
+      var address = userInfo.address;
+      var addressNumber = userInfo.addressNumber;
+      var location = userInfo.location;
+    }
+    else{
+      userName= null
+      addressNumber = null
+      address = null
+      location = null
+    }
     const {cartItems} = cart;
 
     const productId = props.match.params.id;
@@ -23,7 +42,20 @@ function CartScreen(props){
     }, []);
 
     const checkoutHandler = () => {
+      if (!userInfo)
+      {
         props.history.push("/signin?redirect=shipping")
+      } 
+      else {
+        let productsCart = [];
+        cartItems.forEach(elements => {
+        productsCart.push({"address": address, "addressNumber": addressNumber, "location": location, "buyer": userName, "product": elements.id, "name": elements.name, "price": elements.price, "userName": elements.userName, "image": elements.image})
+        });
+        props.history.push("/")
+        dispatch(saveCartProducts({productsCart}));
+      }
+      
+
     }
 
     return <div className="cart">
@@ -31,7 +63,7 @@ function CartScreen(props){
       <ul className="cart-list-container">
         <li>
           <h3>
-            Shopping Cart
+            Carrito de compra
           </h3>
           <div>
             Price
@@ -40,7 +72,7 @@ function CartScreen(props){
         {
           cartItems.length === 0 ?
             <div>
-              Cart is empty
+              Tu carrito esta vacio que esperas a llenarlo
           </div>
             :
             cartItems.map(item =>
@@ -73,12 +105,12 @@ function CartScreen(props){
     </div>
     <div className="cart-action">
       <h3>
-        Subtotal ( {cartItems.reduce((a, c) => a + c.qty, 0)} items)
+        Subtotal ( {cartItems.reduce((a, c) => a + c.qty, 0)} Articulos)
         :
          $ {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
       </h3>
       <button onClick={checkoutHandler} className="button primary full-width" disabled={cartItems.length === 0}>
-        Proceed to Checkout
+        Procede al Checkout
       </button>
 
     </div>

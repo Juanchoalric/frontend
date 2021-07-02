@@ -9,7 +9,6 @@ function HomeScreen (props) {
     const productList = useSelector(state=>state.productList);
     const {products, loading, error} = productList;
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(listProducts());
         return () => {
@@ -23,16 +22,15 @@ function HomeScreen (props) {
             {
                 products.map(product=> 
                         <li key={products._id}>
-                            <div class="product">
-                                <Link to={"products/"+ product._id}>
-                                    <img class="product-image" src={product.image} alt="products"/>
+                            <div className="product">
+                                <Link className="img-home" to={"products/"+ product._id}>
+                                    <img className="product-image" src={product.image} alt="products"/>
                                 </Link>
-                                <div class="product-name">
-                                    <Link to={"products/ " + product._id}>{product.name}</Link>
+                                <div className="product-name">
+                                    <Link to={"products/" + product._id}>{product.name}</Link>
                                 </div>
-                                <div class="product-brand">{product.brand}</div>
-                                <div class="product-price">${product.price}</div>
-                                <div class="product-rating">{product.rating} Stars ({product.numReviews})</div>
+                                <div className="product-brand">{product.brand}</div>
+                                <div className="product-price">${product.price}</div>
                             </div>
                         </li>
                 )
