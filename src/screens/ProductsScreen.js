@@ -181,7 +181,9 @@ function ProductsScreen (props) {
 }
 
 else{
-return <div style={"width:800px; margin:0 auto;"}><img src="https://http.cat/401.jpg" alt="401"></img></div>
+return <div className="content content-margined">
+<div className="form">
+  <img src="https://http.cat/401.jpg" alt="401"></img></div></div>
 }
 }
 export default ProductsScreen;
