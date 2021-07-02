@@ -39,8 +39,19 @@ function ProductsScreen (props) {
       }
       const HandleFileInputChange = (e) =>{
         // fileInputState y setFileInputState son image y setImage
+        e.preventDefault();
         const file = e.target.files[0];
-        
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setImage(reader.result);
+        }
+        uploadImage(image);
+
+      }
+      const uploadImage = (base64EncodedImage) =>{
+        console.log(base64EncodedImage)
+
       }
     const openModal = (product) => {
         setModalVisible(true);
@@ -48,7 +59,7 @@ function ProductsScreen (props) {
         setName(product.name);
         setPrice(product.price);
         setDescription(product.description);
-        setImage(product.image);
+        //setImage(product.image);
         setBrand(product.brand);
         setCategory(product.category);
     };
@@ -96,7 +107,7 @@ function ProductsScreen (props) {
                     <label htmlFor="image">
                         Imagen
                     </label>
-                    <input type="file" name="image" id="image" value={image} accept='.jpeg, .png, .jpg' onChange={HandleFileInputChange} />
+                    <input type="file" name="image" id="image" accept='.jpeg, .png, .jpg' onChange={HandleFileInputChange} />
 
                 </li>
                 <li>

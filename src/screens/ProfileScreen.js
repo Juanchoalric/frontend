@@ -24,14 +24,12 @@ function ProfileScreen (props) {
         admin_ = userInfo.isAdmin;
         userName = userInfo.buyer;
     }
-    console.log(productsBought)
     if (admin_){
 
         let adminProducts = []
 
         productsBought.forEach(element => {
             if (element.userName === userInfo.name) {
-                console.log(userInfo.userName)
                 adminProducts.push(element)
             }
         });
@@ -73,13 +71,11 @@ function ProfileScreen (props) {
         </table>
       </div>
     } else {
-        console.log(userName);
         if (userName != null){
             let adminProducts = []
         
         productsBought.forEach(element => {
             if (element.buyer === userInfo.name) {
-                console.log(userInfo.userName)
                 adminProducts.push(element)
             }
         });

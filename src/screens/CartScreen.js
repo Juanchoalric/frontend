@@ -15,9 +15,7 @@ function CartScreen(props){
     if (userInfo != null){
       //var {userInfo} = userSignin;
       //const {userInfo} = userSignin
-      console.log(userInfo)
       var userName = userInfo.name;
-      console.log("Imprimo el usuario: " + userName)
       var address = userInfo.address;
       var addressNumber = userInfo.addressNumber;
       var location = userInfo.location;
@@ -44,19 +42,16 @@ function CartScreen(props){
     }, []);
 
     const checkoutHandler = () => {
-      console.log(userSignin)
       if (!userInfo)
       {
         props.history.push("/signin?redirect=shipping")
       } 
       else {
         let productsCart = [];
-        console.log(userSignin)
         cartItems.forEach(elements => {
         productsCart.push({"address": address, "addressNumber": addressNumber, "location": location, "buyer": userName, "product": elements.id, "name": elements.name, "price": elements.price, "userName": elements.userName, "image": elements.image})
         });
         props.history.push("/")
-        console.log(productsCart)
         dispatch(saveCartProducts({productsCart}));
       }
       
