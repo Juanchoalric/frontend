@@ -1,5 +1,5 @@
 import data from './data'
-import {BrowserRouter, Link, Route} from "react-router-dom";
+import {BrowserRouter, Link, Route, Redirect} from "react-router-dom";
 import { createHashHistory } from 'history'
 import './App.css';
 import HomeScreen from "./screens/HomeScreen";
@@ -54,9 +54,8 @@ function App() {
                 {
                     userInfo ? <Link to='/' onClick={function(e) {
                         Cookies.remove('userInfo');
-                        window.location.reload(); 
-                        history.push("/", { from: "/" });
-                        
+                        window.location.href = "/";
+                        <Redirect to='/'/>
                     }}>Cerrar Sesion&nbsp;&nbsp;</Link>:
                     ""
                 }
